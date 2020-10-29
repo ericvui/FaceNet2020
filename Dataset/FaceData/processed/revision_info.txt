@@ -1,0 +1,7 @@
+arguments: src/align_dataset_mtcnn.py Dataset/FaceData/raw Dataset/FaceData/processed --image_size 160 --margin 32 --random_order --gpu_memory_fraction 0.25
+--------------------
+tensorflow version: 1.13.1
+--------------------
+git hash: b'eb5b26bc7983f51a90fd43e9413dc038d4cd952a'
+--------------------
+b'diff --git a/requirements.txt b/requirements.txt\nindex d16ee22..e585b7f 100644\n--- a/requirements.txt\n+++ b/requirements.txt\n@@ -1,4 +1,4 @@\n-tensorflow>=1.12.1\n+tensorflow=1.13.1\n scipy==1.1.0\n scikit-learn\n opencv-python\ndiff --git a/src/align/detect_face.py b/src/align/detect_face.py\nindex 7f98ca7..88e9052 100644\n--- a/src/align/detect_face.py\n+++ b/src/align/detect_face.py\n@@ -82,7 +82,7 @@ class Network(object):\n         session: The current TensorFlow session\n         ignore_missing: If true, serialized weights for missing layers are ignored.\n         """\n-        data_dict = np.load(data_path, encoding=\'latin1\').item() #pylint: disable=no-member\n+        data_dict = np.load(data_path, encoding=\'latin1\',allow_pickle=True).item() #pylint: disable=no-member\n \n         for op_name in data_dict:\n             with tf.variable_scope(op_name, reuse=True):'
