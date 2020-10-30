@@ -20,12 +20,13 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--path', help='Path of the video you want to test on.', default=0)
     args = parser.parse_args()
-    
+    #
+    BESTRATE = 0.5
     # Cai dat cac tham so can thiet
     MINSIZE = 20
     THRESHOLD = [0.6, 0.7, 0.7]
     FACTOR = 0.709
-    IMAGE_SIZE = 182
+
     INPUT_IMAGE_SIZE = 160
     CLASSIFIER_PATH = 'Models/facemodel.pkl'
     VIDEO_PATH = args.path
@@ -102,18 +103,21 @@ def main():
                             print("Name: {}, Probability: {}".format(best_name, best_class_probabilities))
 
                             # Ve khung mau xanh quanh khuon mat
+                            #if best_class_probabilities > BESTRATE:
                             cv2.rectangle(frame, (bb[i][0], bb[i][1]), (bb[i][2], bb[i][3]), (0, 255, 0), 2)
                             text_x = bb[i][0]
                             text_y = bb[i][3] + 20
 
-                            # Neu ty le nhan dang > 0.5 thi hien thi ten
-                            if best_class_probabilities > 0.5:
+                            # Neu ty le nhan dang > BESTRATE thi hien thi ten
+                            if best_class_probabilities > BESTRATE:
                                 name = class_names[best_class_indices[0]]
                             else:
-                                # Con neu <=0.5 thi hien thi Unknow
+                                # Con neu <= BESTRATE thi hien thi Unknown
                                 name = "Unknown"
+                                #name = 'Maybe ' + class_names[best_class_indices[0]]
                                 
-                            # Viet text len tren frame    
+                            # Viet text len tren frame
+                            #if best_class_probabilities > BESTRATE:
                             cv2.putText(frame, name, (text_x, text_y), cv2.FONT_HERSHEY_COMPLEX_SMALL,
                                         1, (255, 255, 255), thickness=1, lineType=2)
                             cv2.putText(frame, str(round(best_class_probabilities[0], 3)), (text_x, text_y + 17),

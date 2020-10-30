@@ -47,9 +47,9 @@ def main(args):
             if args.use_split_dataset:
                 dataset_tmp = facenet.get_dataset(args.data_dir)
                 train_set, test_set = split_dataset(dataset_tmp, args.min_nrof_images_per_class, args.nrof_train_images_per_class)
-                if (args.mode=='TRAIN'):
+                if args.mode == 'TRAIN':
                     dataset = train_set
-                elif (args.mode=='CLASSIFY'):
+                elif args.mode == 'CLASSIFY':
                     dataset = test_set
             else:
                 dataset = facenet.get_dataset(args.data_dir)
