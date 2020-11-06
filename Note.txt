@@ -1,0 +1,15 @@
+1. Với video là nguồn đã record.
+
+    a) Donald Trump
+
+        python src/face_rec.py --path video/DonaldTrumpCovid19.mp4
+
+    b) Donald Trump va Biden
+
+        python src/face_rec.py --path video/TrumpBiden.mp4
+
+        python src/face_rec.py --path video/TrumpBiden.wmv
+
+    c) Mr. Bean
+
+        python src/face_rec.py --path video/MrBean.mp4
