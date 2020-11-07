@@ -20,6 +20,9 @@ Tiểu luận mô học: Thị Giác Máy Tính
 
 1. Với Webcam
     
-        python src/face_rec_cam.py
+python src/face_rec_cam.py
 
  
+2. Video
+ 
+python src/face_rec.py --path video/QuangLap.mp4
