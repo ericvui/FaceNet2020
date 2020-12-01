@@ -10,11 +10,11 @@ Tiểu luận mô học: Thị Giác Máy Tính
 ## MỘT SỐ BƯỚC
 1. Tiền xử lý dữ liệu với lệnh sau:
 
-    python src/align_dataset_mtcnn.py  Dataset/FaceData/raw Dataset/FaceData/processed --image_size 160 --margin 32  --random_order --gpu_memory_fraction 0.25
+python src/align_dataset_mtcnn.py  Dataset/FaceData/raw Dataset/FaceData/processed --image_size 160 --margin 32  --random_order --gpu_memory_fraction 0.25
 
 2. Train model với 1 số ảnh mới trong bộ dữ liệu 
 
-    python src/classifier.py TRAIN Dataset/FaceData/processed Models/20180402-114759.pb Models/facemodel.pkl --batch_size 1000
+python src/classifier.py TRAIN Dataset/FaceData/processed Models/20180402-114759.pb Models/facemodel.pkl --batch_size 1000
 
 ## KIỂM THỬ KẾT QUẢ MODEL
 
@@ -23,6 +23,3 @@ Tiểu luận mô học: Thị Giác Máy Tính
 python src/face_rec_cam.py
 
  
-2. Video
- 
-python src/face_rec.py --path video/QuangLap.mp4
